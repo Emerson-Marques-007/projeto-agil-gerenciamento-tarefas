@@ -4,7 +4,11 @@ import os
 ARQUIVO = "tarefas.json"
 
 def carregar_tarefas():
-    """Carrega a lista de tarefas do arquivo JSON. Retorna uma lista de dicionários."""
+    """
+    Carrega as tarefas do arquivo JSON.
+    Retorna:
+        list: Lista de tarefas (cada tarefa é um dicionário).
+    """
     if not os.path.exists(ARQUIVO):
         return []
     with open(ARQUIVO, "r") as f:
