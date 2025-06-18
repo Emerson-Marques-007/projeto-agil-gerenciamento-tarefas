@@ -4,7 +4,7 @@ import os
 ARQUIVO = "tarefas.json"
 
 def carregar_tarefas():
-    """Carrega a lista de tarefas do arquivo JSON."""
+    """Carrega a lista de tarefas do arquivo JSON. Retorna uma lista de dicionários."""
     if not os.path.exists(ARQUIVO):
         return []
     with open(ARQUIVO, "r") as f:
@@ -19,13 +19,13 @@ def salvar_tarefas(tarefas):
         json.dump(tarefas, f, indent=2)
 
 def listar_tarefas():
-    """Exibe todas as tarefas cadastradas."""
+    """Exibe todas as tarefas cadastradas no sistema."""
     tarefas = carregar_tarefas()
     for t in tarefas:
         print(f"{t['id']} - {t['titulo']} ({t['prioridade']})")
 
 def criar_tarefa(titulo, prioridade):
-    """Cria uma nova tarefa com título e prioridade."""
+    """Cria uma nova tarefa com título e prioridade informados."""
     if prioridade not in ["baixa", "média", "alta"]:
         print("❌ Prioridade inválida! Use: baixa, média ou alta.")
         return
@@ -44,7 +44,7 @@ def criar_tarefa(titulo, prioridade):
     print("✅ Tarefa criada com sucesso!")
 
 def atualizar_tarefa(id, novo_titulo):
-    """Atualiza o título de uma tarefa pelo ID."""
+    """Atualiza o título de uma tarefa pelo ID informado."""
     tarefas = carregar_tarefas()
     for t in tarefas:
         if t["id"] == id:
@@ -54,14 +54,14 @@ def atualizar_tarefa(id, novo_titulo):
     print("✅ Tarefa atualizada!")
 
 def deletar_tarefa(id):
-    """Remove uma tarefa pelo ID."""
+    """Remove uma tarefa do sistema pelo ID informado."""
     tarefas = carregar_tarefas()
     tarefas = [t for t in tarefas if t["id"] != id]
     salvar_tarefas(tarefas)
     print("🗑️ Tarefa deletada!")
 
 def filtrar_tarefas_por_prioridade(prioridade):
-    """Exibe tarefas filtrando por prioridade."""
+    """Exibe tarefas filtrando por prioridade (baixa, média ou alta)."""
     tarefas = carregar_tarefas()
     filtradas = [t for t in tarefas if t["prioridade"] == prioridade]
     for t in filtradas:
