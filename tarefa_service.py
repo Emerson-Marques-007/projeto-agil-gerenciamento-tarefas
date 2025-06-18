@@ -49,9 +49,10 @@ def atualizar_tarefa(id, novo_titulo):
     for t in tarefas:
         if t["id"] == id:
             t["titulo"] = novo_titulo
-            break
-    salvar_tarefas(tarefas)
-    print("✅ Tarefa atualizada!")
+            salvar_tarefas(tarefas)
+            print("✅ Tarefa atualizada!")
+            return
+    print("❌ ID não encontrado.")
 
 def deletar_tarefa(id):
     """Remove uma tarefa do sistema pelo ID informado."""
