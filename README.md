@@ -59,3 +59,17 @@ Durante o desenvolvimento, o cliente solicitou a inclusão de um filtro de taref
 
 ### Diagrama de Classes
 ![Diagrama de Classes](docs/uml/Diagrama%20de%20Classes.drawio.png)
+
+## 💻 Exemplo de uso
+
+Ao rodar o sistema, você verá o menu:
+
+```
+📋 MENU
+1. Listar tarefas
+2. Criar nova tarefa
+3. Atualizar tarefa
+4. Deletar tarefa
+5. Filtrar por prioridade
+0. Sair
+```
