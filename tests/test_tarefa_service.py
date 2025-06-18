@@ -60,3 +60,13 @@ def test_criar_e_listar():
     tarefas = carregar_tarefas()
     assert len(tarefas) == 1
     assert tarefas[0]["titulo"] == "Testar função"
+
+def test_criar_tarefa_prioridade_invalida(capsys):
+    criar_tarefa("Teste", "urgente")
+    captured = capsys.readouterr()
+    assert "Prioridade inválida" in captured.out
+
+def test_atualizar_tarefa_id_inexistente(capsys):
+    atualizar_tarefa(999, "Novo título")
+    captured = capsys.readouterr()
+    assert "ID não encontrado" in captured.out
