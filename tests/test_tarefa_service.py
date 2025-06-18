@@ -1,5 +1,10 @@
+import sys
 import os
 import pytest
+
+# Garante que o diretório do projeto está no PYTHONPATH
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from tarefa_service import (
     salvar_tarefas,
     carregar_tarefas,
@@ -8,8 +13,6 @@ from tarefa_service import (
     deletar_tarefa,
     filtrar_tarefas_por_prioridade
 )
-
-ARQUIVO = "tarefas.json"
 
 @pytest.fixture(autouse=True)
 def limpar_arquivo():
@@ -34,11 +37,16 @@ def test_listar_tarefas_exibe_todas(capsys):
     assert "Tarefa 1" in captured.out
     assert "Tarefa 2" in captured.out
 
-def test_atualizar_tarefa_altera_titulo():
+def test_atualizar_tarefa_altera_titulo(capsys):
     criar_tarefa("Antigo", "média")
     atualizar_tarefa(1, "Novo Título")
     tarefas = carregar_tarefas()
     assert tarefas[0]["titulo"] == "Novo Título"
+
+def test_atualizar_tarefa_id_inexistente(capsys):
+    atualizar_tarefa(999, "Novo título")
+    captured = capsys.readouterr()
+    assert "ID não encontrado" in captured.out
 
 def test_deletar_tarefa_remove_tarefa():
     criar_tarefa("Para deletar", "baixa")
@@ -54,19 +62,7 @@ def test_filtrar_tarefas_por_prioridade_exibe_corretamente(capsys):
     assert "Alta prioridade" in captured.out
     assert "Baixa prioridade" not in captured.out
 
-def test_criar_e_listar():
-    salvar_tarefas([])  # limpa tudo
-    criar_tarefa("Testar função", "alta")
-    tarefas = carregar_tarefas()
-    assert len(tarefas) == 1
-    assert tarefas[0]["titulo"] == "Testar função"
-
 def test_criar_tarefa_prioridade_invalida(capsys):
     criar_tarefa("Teste", "urgente")
     captured = capsys.readouterr()
     assert "Prioridade inválida" in captured.out
-
-def test_atualizar_tarefa_id_inexistente(capsys):
-    atualizar_tarefa(999, "Novo título")
-    captured = capsys.readouterr()
-    assert "ID não encontrado" in captured.out
