@@ -46,3 +46,11 @@ Sistema CRUD de tarefas:
 ## 🔄 Mudança de Escopo
 
 Durante o desenvolvimento, o cliente solicitou a inclusão de um filtro de tarefas por prioridade para facilitar a visualização das tarefas mais críticas. Por isso, foi adicionada a funcionalidade de filtrar tarefas por prioridade no sistema.
+
+## 📊 Diagramas UML
+
+### Diagrama de Casos de Uso
+![Casos de Uso](docs/uml/Diagrama%20de%20Casos%20de%20Uso.drawio.png)
+
+### Diagrama de Classes
+![Diagrama de Classes](docs/uml/Diagrama%20de%20Classes.drawio.png)
