@@ -29,10 +29,6 @@ def criar_tarefa(titulo, prioridade):
     if prioridade not in ["baixa", "média", "alta"]:
         print("❌ Prioridade inválida! Use: baixa, média ou alta.")
         return
-    if not titulo.strip():
-        print("❌ O título não pode ser vazio.")
-        return
-    
     tarefas = carregar_tarefas()
     nova = {
         "id": len(tarefas) + 1,
