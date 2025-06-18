@@ -17,16 +17,21 @@ Sistema CRUD de tarefas:
 - Testes com `pytest`
 - Integração contínua com GitHub Actions
 
-## 🚀 Como Executar
+## 🚀 Como executar
 
 1. Instale as dependências:
-   ```bash
+   ```
    pip install -r requirements.txt
    ```
 
 2. Execute o sistema:
-   ```bash
+   ```
    python main.py
+   ```
+
+3. Para rodar os testes:
+   ```
+   pytest
    ```
 
 3. Siga o menu interativo para gerenciar suas tarefas.
