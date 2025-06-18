@@ -54,7 +54,7 @@ Durante o desenvolvimento, o cliente solicitou a inclusão de um filtro de taref
 
 ## 📊 Diagramas UML
 
-### Diagrama de Casos de Uso
+### Casos de Uso
 ![Casos de Uso](docs/uml/Diagrama%20de%20Casos%20de%20Uso.drawio.png)
 
 ### Diagrama de Classes
